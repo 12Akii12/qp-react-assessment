@@ -7,6 +7,7 @@ interface TodoProps {
 }
 
 const Todo: React.FC<TodoProps> = ({ todo, completed, onToggleCompleted }) => {
+  console.log("test");
   return (
     <div
       className={`flex items-center mb-4 w-full py-3 pl-3 pr-5 ${
@@ -17,7 +18,7 @@ const Todo: React.FC<TodoProps> = ({ todo, completed, onToggleCompleted }) => {
         type="checkbox"
         checked={completed}
         onChange={() => onToggleCompleted(todo)}
-        className="mr-2 w-4 h-4"
+        className="w-4 h-4 mr-2"
       />
       <span className={`${completed ? "line-through" : ""}`}>{todo}</span>
     </div>
