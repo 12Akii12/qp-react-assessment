@@ -34,11 +34,14 @@ const TodoInputField: React.FC<TodoInputProps> = ({ onAddTodo }) => {
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}
-        className="flex-1 mr-2 px-4 py-2 border border-gray-300 rounded"
-        placeholder="Add a new todo"
+        className="flex-1 px-4 py-3 mr-2 border border-gray-300 rounded-lg outline-none hover:border-gray-400 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        placeholder="Add a new todo item..."
       />
-      <button onClick={handleAddTodo} className="px-4 py-2 bg-blue-500 text-white rounded">
-        Add
+      <button
+        onClick={handleAddTodo}
+        className="px-4 md:px-6 py-1 md:py-2 text-sm md:text-base font-normal text-white bg-[#FF005C] rounded-lg"
+      >
+        + Add
       </button>
     </div>
   );
