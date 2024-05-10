@@ -3,14 +3,14 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <header className="bg-white shadow py-4">
-        <div className="max-w-7xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-100">
+      <header className="py-4 bg-white shadow">
+        <div className="px-4 mx-auto max-w-7xl">
           <h1 className="text-2xl font-bold">Todo App</h1>
         </div>
       </header>
       <main>
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="w-full px-4 py-8 mx-auto md:max-w-7xl">
           <TodoList />
         </div>
       </main>

@@ -1,20 +1,16 @@
-import React, { useState, useCallback } from "react";
-import Todo from "./Todo";
+import React, { useCallback } from "react";
 import TodoInputField from "./TodoInputField";
-
-interface TodoItem {
-  text: string;
-  completed: boolean;
-}
+import VirtualizedTodoList from "./VirtualizedTodoList";
+import useLocalStorageTodos from "../custom-hooks/useLocalStorage";
 
 const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useLocalStorageTodos("todos");
 
   const handleAddTodo = useCallback(
     (text: string) => {
       setTodos([...todos, { text, completed: false }]);
     },
-    [todos]
+    [todos, setTodos]
   );
 
   const handleToggleCompleted = useCallback(
@@ -25,22 +21,13 @@ const TodoList: React.FC = () => {
         )
       );
     },
-    [todos]
+    [todos, setTodos]
   );
 
   return (
-    <div className="max-w-md mx-auto mt-8">
+    <div className="max-w-2xl mx-auto mt-8">
       <TodoInputField onAddTodo={handleAddTodo} />
-      <div>
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            todo={todo.text}
-            completed={todo.completed}
-            onToggleCompleted={handleToggleCompleted}
-          />
-        ))}
-      </div>
+      <VirtualizedTodoList todos={todos} onToggleCompleted={handleToggleCompleted} />
     </div>
   );
 };

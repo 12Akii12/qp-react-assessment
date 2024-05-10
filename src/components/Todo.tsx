@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface TodoProps {
   todo: string;
@@ -7,7 +7,6 @@ interface TodoProps {
 }
 
 const Todo: React.FC<TodoProps> = ({ todo, completed, onToggleCompleted }) => {
-  console.log("test");
   return (
     <div
       className={`flex items-center mb-4 w-full py-3 pl-3 pr-5 ${
@@ -20,7 +19,9 @@ const Todo: React.FC<TodoProps> = ({ todo, completed, onToggleCompleted }) => {
         onChange={() => onToggleCompleted(todo)}
         className="w-4 h-4 mr-2"
       />
-      <span className={`${completed ? "line-through" : ""}`}>{todo}</span>
+      <span className={`text-base font-normal line-clamp-1 ${completed ? "line-through" : ""}`}>
+        {todo}
+      </span>
     </div>
   );
 };
